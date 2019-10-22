@@ -1,0 +1,21 @@
+---
+# Creates a DB on InfluxDB
+#
+# Expected, that following variables are populated
+# influxdb_hostname
+# influxdb_admin_user_name
+# influxdb_admin_user_password
+# influxdb_enable_ssl
+# influxdb_validate_cert
+#
+# influxdb_db_name
+
+- import_playbook: flush_jumphost_key.yaml
+
+- name: Create user
+  hosts: influxdb
+  tasks:
+    - import_role:
+        name: opentelekomcloud_infra.influxdb
+        tasks_from: db.yaml
+

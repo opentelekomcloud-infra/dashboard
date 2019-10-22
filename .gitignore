@@ -1,0 +1,11 @@
+.ansible_*
+inv.log
+inventory/production
+__pycache__
+*.retry
+playbooks/install/credentials/*
+playbooks/install/*_ssh_key
+*.swp
+*.swo
+**/*.swp
+**/*.swo
