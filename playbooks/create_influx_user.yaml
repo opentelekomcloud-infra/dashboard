@@ -8,7 +8,6 @@
 # influxdb_enable_ssl
 # influxdb_validate_cert
 #
-# influxdb_db_name
 # influxdb_user_name
 # influxdb_user_password
 # influxdb_user_grants
@@ -19,5 +18,5 @@
   hosts: influxdb
   tasks:
     - import_role:
-        name: opentelekomcloud-infra.influxdb
+        name: opentelekomcloud_infra.influxdb
         tasks_from: create_user.yaml
