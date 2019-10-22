@@ -11,15 +11,12 @@
 # influxdb_db_name
 # influxdb_user_name
 # influxdb_user_password
+# influxdb_user_grants
 
 - import_playbook: flush_jumphost_key.yaml
 
 - name: Create user
   hosts: influxdb
-  vars:
-    influxdb_user_grants:
-      - database: "{{ influxdb_db_name }}"
-        privilege: "WRITE"
   tasks:
     - import_role:
         name: opentelekomcloud-infra.influxdb
