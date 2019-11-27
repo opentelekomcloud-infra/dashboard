@@ -1,0 +1,15 @@
+---
+# Playbook to install Web servers
+
+- name: Provision Web server
+  hosts: os_infra
+  tasks:
+    - name: Create servers
+      include_role:
+        name: web_server
+        tasks_from: provision_openstack.yaml
+      vars:
+        web_server_host_server_name: "{{ item.name }}"
+        web_server_host_server_fqdn: "{{ item.name }}"
+        web_server_host_availability_zone: "{{ item.az }}"
+      loop: "{{ web_server_hosts }}"

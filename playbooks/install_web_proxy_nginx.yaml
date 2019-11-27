@@ -1,0 +1,9 @@
+---
+# Playbook to install Nginx proxy
+- import_playbook: flush_jumphost_key.yaml
+
+- name: Provision Nginx based proxy
+  hosts: web_proxy_nginx
+  roles:
+    - opentelekomcloud.server_common
+    - opentelekomcloud_infra.web_proxy_nginx

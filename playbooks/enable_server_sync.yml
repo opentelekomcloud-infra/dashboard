@@ -1,0 +1,19 @@
+---
+# Playbook to install server sync script
+- import_playbook: flush_jumphost_key.yaml
+
+- name: Generate/detect SSH keys for servers
+  hosts: sync_group
+  tasks:
+    - include_role:
+        name: opentelekomcloud_infra.server_sync
+        tasks_from: generate_ssh_key.yml
+
+- name: Gather SSH keys per groups
+  hosts: sync_group
+  tasks:
+
+    - include_role:
+        name: opentelekomcloud_infra.server_sync
+      vars:
+        sync_group_name: sync_group
