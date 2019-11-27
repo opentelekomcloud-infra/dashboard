@@ -3,8 +3,8 @@ inv.log
 inventory/production
 __pycache__
 *.retry
-playbooks/install/credentials/*
-playbooks/install/*_ssh_key
+playbooks/credentials/*
+playbooks/*_ssh_key
 *.swp
 *.swo
 **/*.swp
