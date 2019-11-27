@@ -1,5 +1,7 @@
 ---
   - name: opentelekomcloud_infra.grafana
+    src: https://github.com/opentelekomcloud-infra/ansible-role-grafana.git
+    version: master
   - name: opentelekomcloud_infra.influxdb
     src: https://github.com/opentelekomcloud-infra/ansible-role-influxdb.git
     version: master
@@ -7,4 +9,7 @@
   - name: opentelekomcloud_infra.kapacitor
   - name: opentelekomcloud_infra.certbot
     src: https://github.com/opentelekomcloud-infra/ansible-role-certbot.git
+    version: master
+  - name: opentelekomcloud_infra.server_sync
+    src: https://github.com/opentelekomcloud-infra/ansible-role-server-sync.git
     version: master
