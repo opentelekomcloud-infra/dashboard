@@ -6,6 +6,7 @@
     src: https://github.com/opentelekomcloud-infra/ansible-role-influxdb.git
     version: master
   - name: opentelekomcloud_infra.telegraf
+    src: https://github.com/opentelekomcloud-infra/ansible-role-telegraf.git
   - name: opentelekomcloud_infra.kapacitor
   - name: opentelekomcloud_infra.certbot
     src: https://github.com/opentelekomcloud-infra/ansible-role-certbot.git
@@ -13,3 +14,5 @@
   - name: opentelekomcloud_infra.server_sync
     src: https://github.com/opentelekomcloud-infra/ansible-role-server-sync.git
     version: master
+  - name: opentelekomcloud.server_common
+ 
