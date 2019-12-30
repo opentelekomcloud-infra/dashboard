@@ -1,5 +1,5 @@
 ---
-# Playbook to install InfluxDB
+# Playbook to install Grafana
 - import_playbook: flush_jumphost_key.yaml
 
 - name: Provision Grafana
