@@ -5,6 +5,8 @@
   - name: opentelekomcloud_infra.influxdb
     src: https://github.com/opentelekomcloud-infra/ansible-role-influxdb.git
     version: master
+  - name: opentelekomcloud_infra.alerta
+    src: https://github.com/opentelekomcloud-infra/ansible-role-alerta.git
   - name: opentelekomcloud_infra.telegraf
     src: https://github.com/opentelekomcloud-infra/ansible-role-telegraf.git
   - name: opentelekomcloud_infra.kapacitor

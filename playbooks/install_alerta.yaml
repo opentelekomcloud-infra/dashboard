@@ -1,0 +1,8 @@
+---
+# Playbook to install Alerta
+- import_playbook: flush_jumphost_key.yaml
+
+- name: Provision Alerta
+  hosts: alerta
+  roles:
+    - opentelekomcloud_infra.alerta
