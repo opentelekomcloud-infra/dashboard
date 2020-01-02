@@ -1,28 +1,28 @@
 ---
-  - name: opentelekomcloud_infra.alerta
-    src: https://github.com/opentelekomocloud-infra/ansible-role-alerta.git
-  - name: opentelekomcloud_infra.apimon_executor
-    src: https://github.com/opentelekomcloud-infra/ansible-role-executor.git
-  - name: opentelekomcloud_infra.certbot
-    src: https://github.com/opentelekomcloud-infra/ansible-role-certbot.git
-  - name: opentelekomcloud_infra.grafana
-    src: https://github.com/opentelekomcloud-infra/ansible-role-grafana.git
-  - name: opentelekomcloud_infra.influxdb
-    src: https://github.com/opentelekomcloud-infra/ansible-role-influxdb.git
-  - name: opentelekomcloud_infra.kapacitor
-    src: https://github.com/opentelekomcloud-infra/ansible-role-kapacitor.git
-  - name: opentelekomcloud_infra.server_sync
-    src: https://github.com/opentelekomcloud-infra/ansible-role-server-sync.git
-  - name: opentelekomcloud_infra.telegraf
-    src: https://github.com/opentelekomcloud-infra/ansible-role-telegraf.git
-  - name: opentelekomcloud.vpc
-    src: https://github.com/opentelekomcloud/ansible-role-vpc.git
-  - name: opentelekomcloud.keypair
-    src: https://github.com/opentelekomcloud/ansible-role-keypair.git
-  - name: opentelekomcloud.bastion
-    src: https://github.com/opentelekomcloud/ansible-role-bastion.git
-  - name: opentelekomcloud.server_common
-    src: https://github.com/opentelekomcloud/ansible-role-server-common.git
-  - name: opentelekomcloud.security_group
-    src: https://github.com/opentelekomcloud/ansible-role-security-group.git
+- name: opentelekomcloud_infra.alerta
+  src: https://github.com/opentelekomcloud-infra/ansible-role-alerta.git
+- name: opentelekomcloud_infra.apimon_executor
+  src: https://github.com/opentelekomcloud-infra/ansible-role-executor.git
+- name: opentelekomcloud_infra.certbot
+  src: https://github.com/opentelekomcloud-infra/ansible-role-certbot.git
+- name: opentelekomcloud_infra.grafana
+  src: https://github.com/opentelekomcloud-infra/ansible-role-grafana.git
+- name: opentelekomcloud_infra.influxdb
+  src: https://github.com/opentelekomcloud-infra/ansible-role-influxdb.git
+- name: opentelekomcloud_infra.kapacitor
+  src: https://github.com/opentelekomcloud-infra/ansible-role-kapacitor.git
+- name: opentelekomcloud_infra.server_sync
+  src: https://github.com/opentelekomcloud-infra/ansible-role-server-sync.git
+- name: opentelekomcloud_infra.telegraf
+  src: https://github.com/opentelekomcloud-infra/ansible-role-telegraf.git
+- name: opentelekomcloud.vpc
+  src: https://github.com/opentelekomcloud/ansible-role-vpc.git
+- name: opentelekomcloud.keypair
+  src: https://github.com/opentelekomcloud/ansible-role-keypair.git
+- name: opentelekomcloud.bastion
+  src: https://github.com/opentelekomcloud/ansible-role-bastion.git
+- name: opentelekomcloud.server_common
+  src: https://github.com/opentelekomcloud/ansible-role-server-common.git
+- name: opentelekomcloud.security_group
+  src: https://github.com/opentelekomcloud/ansible-role-security-group.git
  
