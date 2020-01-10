@@ -11,54 +11,57 @@
   run_once: true
   tasks:
 
-    - name: template temp file
-      delegate_to: localhost
-      tempfile:
-        state: file
-      register: tempfile_1
+    - block:
 
-    - name: result temp file
-      delegate_to: localhost
-      tempfile:
-        state: file
-      register: tempfile_2
+      - name: template temp file
+        delegate_to: localhost
+        tempfile:
+          state: file
+        register: tempfile_1
 
-    - name: flush template
-      delegate_to: localhost
-      copy:
-        content: "{{ alerta_plugins_options.ZULIP_TEMPLATE }}"
-        dest: "{{ tempfile_1.path }}"
+      - name: result temp file
+        delegate_to: localhost
+        tempfile:
+          state: file
+        register: tempfile_2
 
-    - name: render template
-      delegate_to: localhost
-      template:
-        src: "{{ tempfile_1.path }}"
-        dest: "{{ tempfile_2.path }}"
-      vars:
-        customer: 'fake_customer'
-        status: 'some_status'
-        id: fake_id
-        severity: 'fake_severity'
-        environment: 'Production'
-        origin: 'apimon_watcher_origin'
-        service: ['apimon', 'fake_service']
-        resource: 'some_resource'
-        event: 'TERRIBLE_FAILURE'
-        text: 'usually we do not have text, but who knows for sure'
-        raw_data: 'raw_data is an original error string without modifications'
-        attributes:
-          logUrl: 'http://fake.com/path/to/log'
+      - name: flush template
+        delegate_to: localhost
+        copy:
+          content: "{{ alerta_plugins_options.ZULIP_TEMPLATE }}"
+          dest: "{{ tempfile_1.path }}"
 
-    - name: read rendered template
-      debug:
-        msg: "{{ lookup('file', tempfile_2.path).split('\n') }}"
+      - name: render template
+        delegate_to: localhost
+        template:
+          src: "{{ tempfile_1.path }}"
+          dest: "{{ tempfile_2.path }}"
+        vars:
+          customer: 'fake_customer'
+          status: 'some_status'
+          id: fake_id
+          severity: 'fake_severity'
+          environment: 'Production'
+          origin: 'apimon_watcher_origin'
+          service: ['apimon', 'fake_service']
+          resource: 'some_resource'
+          event: 'TERRIBLE_FAILURE'
+          text: 'usually we do not have text, but who knows for sure'
+          raw_data: 'raw_data is an original error string without modifications'
+          attributes:
+            logUrl: 'http://fake.com/path/to/log'
 
-    - name: use the registered var and the file module to remove the temporary file
-      delegate_to: localhost
-      file:
-        path: "{{ item.path }}"
-        state: absent
-      loop:
-        - "{{ tempfile_1 }}"
-        - "{{ tempfile_2 }}"
-      when: item.path is defined
+      - name: read rendered template
+        debug:
+          msg: "{{ lookup('file', tempfile_2.path).split('\n') }}"
+
+      always:
+        - name: use the registered var and the file module to remove the temporary file
+          delegate_to: localhost
+          file:
+            path: "{{ item.path }}"
+            state: absent
+          loop:
+            - "{{ tempfile_1 }}"
+            - "{{ tempfile_2 }}"
+          when: item.path is defined
