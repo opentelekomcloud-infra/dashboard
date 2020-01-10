@@ -50,6 +50,15 @@
           raw_data: 'raw_data is an original error string without modifications'
           attributes:
             logUrl: 'http://fake.com/path/to/log'
+          history:
+            - type: note
+              text: 'some funny note'
+              user: 'some user'
+            - type: new
+              text: useless
+            - type: note
+              text: 'another note'
+              user: 'another user'
 
       - name: read rendered template
         debug:
