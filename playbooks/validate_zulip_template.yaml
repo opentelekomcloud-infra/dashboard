@@ -26,7 +26,7 @@
     - name: flush template
       delegate_to: localhost
       copy:
-        content: "{{ ZULIP_TEMPLATE }}"
+        content: "{{ alerta_plugins_options.ZULIP_TEMPLATE }}"
         dest: "{{ tempfile_1.path }}"
 
     - name: render template
