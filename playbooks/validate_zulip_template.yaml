@@ -1,0 +1,64 @@
+---
+# This playbook aims to validate Alerta/Zulip message template
+# by using fake alert data for parameterizing template in the
+# inventory.
+#
+# group: alerta
+# variable: ZULIP_TEMPLATE
+
+- name: Test Alerta/Zulip template
+  hosts: alerta
+  run_once: true
+  tasks:
+
+    - name: template temp file
+      delegate_to: localhost
+      tempfile:
+        state: file
+      register: tempfile_1
+
+    - name: result temp file
+      delegate_to: localhost
+      tempfile:
+        state: file
+      register: tempfile_2
+
+    - name: flush template
+      delegate_to: localhost
+      copy:
+        content: "{{ ZULIP_TEMPLATE }}"
+        dest: "{{ tempfile_1.path }}"
+
+    - name: render template
+      delegate_to: localhost
+      template:
+        src: "{{ tempfile_1.path }}"
+        dest: "{{ tempfile_2.path }}"
+      vars:
+        customer: 'fake_customer'
+        status: 'some_status'
+        id: fake_id
+        severity: 'fake_severity'
+        environment: 'Production'
+        origin: 'apimon_watcher_origin'
+        service: ['apimon', 'fake_service']
+        resource: 'some_resource'
+        event: 'TERRIBLE_FAILURE'
+        text: 'usually we do not have text, but who knows for sure'
+        raw_data: 'raw_data is an original error string without modifications'
+        attributes:
+          logUrl: 'http://fake.com/path/to/log'
+
+    - name: read rendered template
+      debug:
+        msg: "{{ lookup('file', tempfile_2.path).split('\n') }}"
+
+    - name: use the registered var and the file module to remove the temporary file
+      delegate_to: localhost
+      file:
+        path: "{{ item.path }}"
+        state: absent
+      loop:
+        - "{{ tempfile_1 }}"
+        - "{{ tempfile_2 }}"
+      when: item.path is defined
