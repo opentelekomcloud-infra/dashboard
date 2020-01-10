@@ -51,12 +51,12 @@
           attributes:
             logUrl: 'http://fake.com/path/to/log'
           history:
-            - type: note
+            - change_type: note
               text: 'some funny note'
               user: 'some user'
-            - type: new
+            - change_type: new
               text: useless
-            - type: note
+            - change_type: note
               text: 'another note'
               user: 'another user'
 
