@@ -8,9 +8,9 @@
 - name: Provision VPC
   hosts: os_infra
   tasks:
-    - name: Create VPC
-      include_role:
-        name: opentelekomcloud.vpc
+    #- name: Create VPC
+    #  include_role:
+    #    name: opentelekomcloud.vpc
     - name: Create security groups
       include_role:
         name: opentelekomcloud.security_group
