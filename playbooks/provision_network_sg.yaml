@@ -27,7 +27,7 @@
            descr: "InfluxDB SG for APIMon"}
         - {name: "{{web_proxy_sg_name}}", rules: "{{web_proxy_sg_rules}}",
            descr: "Web proxy SG for APIMon"}
-         - {name: "{{alerta_sg_name}}", rules: "{{alerta_sg_rules}}",
+        - {name: "{{alerta_sg_name}}", rules: "{{alerta_sg_rules}}",
            descr: "Alerta SG for APIMon"}
       loop_control:
         loop_var: sg
