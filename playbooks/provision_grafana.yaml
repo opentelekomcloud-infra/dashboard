@@ -1,0 +1,21 @@
+---
+# Provision (create) Host for grafana
+#
+# Vars:
+# grafana_host_image (default: Standard_Fedora_30_latest)
+# grafana_host_flavor (default: s2.xlarge.2)
+# grafana_host_name
+# grafana_host_availability_zone (default eu-de-03)
+# grafana_host_root_volume_size (default 12)
+# grafana_host_data_volume_size (default 20)
+# grafana_host_security_groups
+# grafana_host_network
+# grafana_host_key_name
+
+- name: Provision grafana
+  hosts: os_infra
+  tasks:
+    - name: Create server
+      include_role:
+        name: opentelekomcloud_infra.grafana
+        tasks_from: provision_openstack.yaml
