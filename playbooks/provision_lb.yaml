@@ -78,10 +78,10 @@
         subnet_id: "{{ subnet_id }}"
         protocol_port: 8086
     
-     - name: Register 80 in the LB
-       otc_member:
-         pool: "{{ pools.pool-80 }}"
-         address: "{{ influx_server.ansible_facts.openstack_servers[0].private_v4 }}"
-         subnet_id: "{{ subnet_id }}"
-         protocol_port: 80
+    - name: Register 80 in the LB
+      otc_member:
+        pool: "{{ pools.pool-80 }}"
+        address: "{{ influx_server.ansible_facts.openstack_servers[0].private_v4 }}"
+        subnet_id: "{{ subnet_id }}"
+        protocol_port: 80
     
