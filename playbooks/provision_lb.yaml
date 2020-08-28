@@ -14,7 +14,7 @@
     - set_fact:
         subnet_id: "{{ subnets.ansible_facts.openstack_subnets[0].id }}"
     
-    - name: Create {{ haproxy_lb_name }} LB
+    - name: Create "{{ haproxy_lb_name }}" LB
       otc_loadbalancer:
         name: "{{ haproxy_lb_name }}"
         state: present
@@ -22,7 +22,7 @@
         auto_public_ip: true
       register: web-proxy
  
-    - name: Create {{ influxdb_lb_name }} LB
+    - name: Create "{{ influxdb_lb_name }}" LB
       otc_loadbalancer:
         name: "{{ influxdb_lb_name }}"
         state: present
@@ -30,7 +30,7 @@
         auto_public_ip: true
       register: influxdb
 
-    - name: Create {{ influxdb_lb_name }} Listeners
+    - name: Create "{{ influxdb_lb_name }}" Listeners
       otc_listener:
         name: "{{ item.name }}"
         loadbalancer: "{{ apimon_lb.id }}"
@@ -45,7 +45,7 @@
         listeners: "{{ listeners| default({}) | combine({ item.item.name: item.id }) }}"
       with_items: "{{ listener_results.results }}"
 
-    - name: Create {{ influxdb_lb_name }} pools
+    - name: Create "{{ influxdb_lb_name }}" pools
       otc_pool:
         name: "{{ item.name }}"
         listener: "{{ item.listener }}"
